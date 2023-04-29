@@ -1,0 +1,35 @@
+.desktop__sidebar {
+  width: 24vw;
+  height: 100vh;
+}
+
+.desktop__sidebar__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem;
+  text-align: left;
+}
+
+.desktop__sidebar__create__notes__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.desktop__sidebar__create__notes__btn > button {
+  width: 80%;
+  height: 6vh;
+  border: none;
+  border-radius: 2rem;
+  color: white;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1rem;
+}
+
+#add {
+  font-size: 30px;
+}
