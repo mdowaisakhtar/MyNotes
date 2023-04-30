@@ -1,15 +1,25 @@
-import React, { useState } from 'react'
-import './MobileNotes.css'
+// Mobile Homepage to display titles
+import React from "react";
+import "./MobileNotes.css";
+import { useNavigate } from "react-router-dom";
 
-function MobileNotes({ title }) {
-  const [titles, setTitles] = useState([]);
-  const initials = title[0].name.split(' ').map((n) => n[0].toUpperCase()).join('')
+function MobileNotes({ title, setSelected }) {
+  const navigate = useNavigate();
+  const initials = title[0].name
+    .split(" ")
+    .map((n) => n[0].toUpperCase())
+    .join("");
   const newTitle = title[0].name
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
+  const handleTitleClick = () => {
+    localStorage.setItem("selected", title[0].name);
+    setSelected(title[0].name);
+    navigate("/notes");
+  };
   return (
-    <div className="mobile__notes">
+    <div onClick={handleTitleClick} className="mobile__notes">
       <div
         className="mobile__notes__icon"
         style={{ backgroundColor: title[0].color }}
@@ -21,4 +31,4 @@ function MobileNotes({ title }) {
   );
 }
 
-export default MobileNotes
+export default MobileNotes;

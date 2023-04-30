@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./MobileView.css";
 import MobilePopup from "../../components/createNotesPopupMobile/MobilePopup";
-import MobileNotes from "../../components/notesMobile/MobileNotes"
-import { Link } from "react-router-dom";
+import MobileNotes from "../../components/notesMobile/MobileNotes";
+import home from "../../assets/home.png";
 
-function MobileView() {
-  // const [selected, setSelected] = useState("");
+function MobileView({ selected, setSelected }) {
   const [titles, setTitles] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [groupNamesParent, setGroupNamesParent] = useState(
@@ -45,18 +44,28 @@ function MobileView() {
           <span>Create Notes Group</span>
         </button>
       </div>
-      <div className="mobile__sidebar__notes__title">
+      <div
+        className="mobile__sidebar__notes__title"
+        style={{
+          backgroundImage: `url(${home})`
+        }}
+      >
         {titles.length &&
           titles.map((title, index) => (
-            <MobileNotes title={ title } key={index} />
+            <MobileNotes
+              selected={selected}
+              setSelected={setSelected}
+              title={title}
+              key={index}
+            />
           ))}
       </div>
       {showPopup && (
         <div className="mobile__popup__overlay">
           <MobilePopup
-          onClose={handleClose}
-          groupNamesParent={groupNamesParent}
-          setGroupNamesParent={setGroupNamesParent}
+            onClose={handleClose}
+            groupNamesParent={groupNamesParent}
+            setGroupNamesParent={setGroupNamesParent}
           />
         </div>
       )}

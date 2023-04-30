@@ -13,7 +13,7 @@
   font-weight: 700;
   margin-top: 1rem;
   position: fixed;
-  top: 1vh;
+  top: 2vh;
 }
 
 .mobile__sidebar__create__notes__btn {
@@ -41,10 +41,15 @@
   align-items: center;
 }
 
-.mobile__sidebar__notes__title{
-    height: 74vh;
-    margin-top: 22vh;
-    overflow-y: auto;
+.mobile__sidebar__notes__title {
+  min-height: 74vh;
+  margin-top: 22vh;
+  overflow-y: auto;
+  background-size:contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50vh;
+  width: 100vw;
 }
 
 .mobile__popup__overlay {

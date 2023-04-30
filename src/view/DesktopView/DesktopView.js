@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./DesktopView.css";
 import DesktopSidebar from "../../components/sidebarDesktop/DesktopSidebar";
 import DesktopHome from "../../components/homeDesktop/DesktopHome";
