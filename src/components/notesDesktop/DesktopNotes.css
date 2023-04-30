@@ -1,0 +1,62 @@
+.desktop__notes {
+  width: 76vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+ 
+}
+
+.desktop__notes__title {
+  height: 11vh;
+  width: 76vw;
+  background-color: #e8e8e8;
+}
+
+.desktop__notes__content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 64vh;
+  max-height: 60vh;
+  width: 76vw;
+  background-color: #F7ECDC;
+   scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.desktop__notes__content__title{
+    height: 20vh;
+    width: 76vw;
+}
+
+.desktop__notes__input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  width: 76vw;
+  background-color: #e8e8e8;
+  position: fixed;
+  bottom: 0;
+}
+
+.desktop__notes__input > textarea {
+  border: none;
+  outline: none;
+  border-radius: 1vh;
+  height: 25vh;
+  width: 72vw;
+  resize: none;
+}
+
+.desktop__notes__input img {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 20px;
+  height: 20px;
+}

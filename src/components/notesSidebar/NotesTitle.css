@@ -25,3 +25,8 @@
     font-weight: 500;
     color: white;
 }
+
+.highlighted__title{
+    background-color: #F7ECDC;
+    color: black;
+}

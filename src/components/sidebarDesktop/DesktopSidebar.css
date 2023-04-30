@@ -43,3 +43,17 @@
 #add {
   font-size: 30px;
 }
+
+.desktop__sidebar__notes__title {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 79vh;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+

@@ -3,7 +3,7 @@ import "./DesktopSidebar.css";
 import CreateNotesPopup from "../createNotesPopupDesktop/CreateNotesPopup";
 import NotesTitle from "../notesSidebar/NotesTitle";
 
-function DesktopSidebar() {
+function DesktopSidebar({ selected, setSelected }) {
   const [titles, setTitles] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [groupNamesParent, setGroupNamesParent] = useState(
@@ -12,7 +12,6 @@ function DesktopSidebar() {
 
   useEffect(() => {
     const data = localStorage.getItem("groupNames");
-    console.log(typeof data);
     if (data) {
       setGroupNamesParent(JSON.parse(data));
     } else {
@@ -25,7 +24,6 @@ function DesktopSidebar() {
       const obj = JSON.parse(localStorage.getItem("groupNames"));
       const result = Object.keys(obj).map((key) => [obj[key]]);
       setTitles(result);
-      console.log(titles);
     }
   }, [groupNamesParent]);
 
@@ -51,10 +49,17 @@ function DesktopSidebar() {
           <span>Create Notes Group</span>
         </button>
       </div>
-      {titles.length &&
-        titles.map((title, index) => (
-          <NotesTitle key={index} title={title} />
-        ))}
+      <div className="desktop__sidebar__notes__title">
+        {titles.length &&
+          titles.map((title, index) => (
+            <NotesTitle
+              selected={selected}
+              setSelected={setSelected}
+              key={index}
+              title={title}
+            />
+          ))}
+      </div>
       {showPopup && (
         <div className="desktop__popup__overlay">
           <CreateNotesPopup
