@@ -7,13 +7,7 @@ import DesktopNotes from "../../components/notesDesktop/DesktopNotes";
 function DesktopView() {
   const [selected, setSelected] = useState(""); // eslint-disable-line
   const [notes, setNotes] = useState([]); // eslint-disable-line
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
 
-  useEffect(() => {
-    console.log("heya vaidu");
-  }, [notes]);
   return (
     <div className="desktop">
       <DesktopSidebar selected={selected} setSelected={setSelected} />

@@ -5,9 +5,31 @@ import DesktopNotesContent from "../notesContentDesktop/DesktopNotesContent";
 
 function DesktopNotes({ notes, setNotes, selected, setSelected }) {
   const [text, setText] = useState("");
+  const [bgColor, setBgColor] = useState("#fff");
+  const [initials, setInitials] = useState("");
+  const [selectedTitle, setSelectedTitle] = useState("");
 
   useEffect(() => {
     setNotes(JSON.parse(localStorage.getItem(selected)) || []);
+    const groupNames = JSON.parse(localStorage.getItem("groupNames"));
+    const selectedGroup = groupNames.find((group) => group.name === selected);
+    if (selectedGroup) {
+      setBgColor(selectedGroup.color);
+      setInitials(
+        selectedGroup.name
+          .split(" ")
+          .map((word) => word.charAt(0))
+          .join("")
+          .toUpperCase()
+      );
+      setSelectedTitle(
+        selectedGroup.name
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ")
+      );
+    }
+
   }, [selected, setNotes]);
 
   const handleKeyDown = (e) => {
@@ -37,7 +59,15 @@ function DesktopNotes({ notes, setNotes, selected, setSelected }) {
 
   return (
     <div className="desktop__notes">
-      <div className="desktop__notes__title">{selected}</div>
+      <div className="desktop__notes__title">
+        <div
+          className="desktop__notes__title__color"
+          style={{ backgroundColor: bgColor }}
+        >
+          {initials}
+        </div>
+        <div className="desktop__notes__title__text">{selectedTitle}</div>
+      </div>
       <div className="desktop__notes__content">
         {notes && notes.length > 0
           ? notes.map((note, index) => (
@@ -47,7 +77,7 @@ function DesktopNotes({ notes, setNotes, selected, setSelected }) {
       </div>
       <div className="desktop__notes__input">
         <textarea
-          value={text}
+          value={text.trim()}
           placeholder="Enter your notes here"
           onChange={handleChange}
           onKeyDown={handleKeyDown}

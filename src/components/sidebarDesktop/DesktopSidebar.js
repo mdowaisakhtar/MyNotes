@@ -27,16 +27,11 @@ function DesktopSidebar({ selected, setSelected }) {
     }
   }, [groupNamesParent]);
 
-  useEffect(() => {
-    console.log(titles);
-  }, [titles]);
-
   const handleClick = () => {
     setShowPopup(true);
   };
 
   const handleClose = () => {
-    console.log(groupNamesParent);
     setShowPopup(false);
   };
 

@@ -11,6 +11,7 @@
 }
 
 .desktop__sidebar__create__notes__btn {
+  height: 11vh;
   display: flex;
   justify-content: center;
   align-items: center;

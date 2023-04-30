@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./DesktopNotesContent.css";
 
 function DesktopNotesContent({ note }) {
-  console.log( typeof note)
+  
   return (
     <div className="desktop__notes__content__note">
       <div className="desktop__notes__content__date__time__details">
