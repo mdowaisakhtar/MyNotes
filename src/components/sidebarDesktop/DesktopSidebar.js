@@ -45,7 +45,7 @@ function DesktopSidebar({ selected, setSelected }) {
         </button>
       </div>
       <div className="desktop__sidebar__notes__title">
-        {titles.length &&
+        {titles.length > 0 ? (
           titles.map((title, index) => (
             <NotesTitle
               selected={selected}
@@ -53,7 +53,12 @@ function DesktopSidebar({ selected, setSelected }) {
               key={index}
               title={title}
             />
-          ))}
+          ))
+        ) : (
+          <div className="desktop__sidebar__notes__title__empty">
+            <p>No Notes Group Created</p>
+          </div>
+        )}
       </div>
       {showPopup && (
         <div className="desktop__popup__overlay">

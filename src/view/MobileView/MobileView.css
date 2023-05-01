@@ -11,9 +11,8 @@
   width: 80vw;
   font-size: 2rem;
   font-weight: 700;
-  margin-top: 1rem;
   position: fixed;
-  top: 2vh;
+  top: 3vh;
 }
 
 .mobile__sidebar__create__notes__btn {
@@ -23,7 +22,7 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 13vh;
+  top: 12vh;
   background-color: white;
 }
 
@@ -45,9 +44,7 @@
   min-height: 74vh;
   margin-top: 22vh;
   overflow-y: auto;
-  background-size:contain;
-  background-position: center;
-  background-repeat: no-repeat;
+
   height: 50vh;
   width: 100vw;
 }

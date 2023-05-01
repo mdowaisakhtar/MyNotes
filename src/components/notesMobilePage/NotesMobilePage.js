@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./NotesMobilePage.css";
 import enter from "../../assets/icons/enter.png";
 import back from "../../assets/icons/back.png";
+import home from "../../assets/home.png";
 import MobileNotesContent from "../notesContentMobile/MobileNotesContent";
 
 function NotesMobilePage({ selected, setSelected, notes, setNotes }) {
@@ -21,7 +22,6 @@ function NotesMobilePage({ selected, setSelected, notes, setNotes }) {
       setBgColor(selectedGroup.color);
       setInitials(
         selectedGroup.name
-
           .split(" ")
           .map((word) => word.charAt(0))
           .join("")
@@ -34,7 +34,7 @@ function NotesMobilePage({ selected, setSelected, notes, setNotes }) {
           .join(" ")
       );
     }
-  }, [setSelected, setNotes,selected]);
+  }, [setSelected, setNotes, selected]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -42,7 +42,7 @@ function NotesMobilePage({ selected, setSelected, notes, setNotes }) {
     }
   };
 
-  const handleSaveNotes = () => {
+  const handleSaveNotes = (e) => {
     const notes = JSON.parse(localStorage.getItem(selected)) || [];
     const newNoteObj = {
       id: Date.now(),
@@ -81,9 +81,18 @@ function NotesMobilePage({ selected, setSelected, notes, setNotes }) {
         </div>
       </div>
       <div className="mobile__notes__page__body">
-        {notes.map((note, index) => (
-          <MobileNotesContent key={index} note={note} />
-        ))}
+        {notes.length === 0 ? (
+          <div
+            className="mobile__notes__page__body__empty"
+            style={{ backgroundImage: `url(${home})` }}
+          ></div>
+        ) : (
+          <div>
+            {notes.map((note, index) => (
+              <MobileNotesContent key={index} note={note} />
+            ))}
+          </div>
+        )}
       </div>
       <div className="mobile__notes__input">
         <textarea

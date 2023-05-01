@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./MobileView.css";
 import MobilePopup from "../../components/createNotesPopupMobile/MobilePopup";
 import MobileNotes from "../../components/notesMobile/MobileNotes";
-import home from "../../assets/home.png";
+import MobileHome from "../../components/homeMobile/MobileHome";
 
 function MobileView({ selected, setSelected }) {
   const [titles, setTitles] = useState([]);
@@ -44,13 +44,8 @@ function MobileView({ selected, setSelected }) {
           <span>Create Notes Group</span>
         </button>
       </div>
-      <div
-        className="mobile__sidebar__notes__title"
-        style={{
-          backgroundImage: `url(${home})`
-        }}
-      >
-        {titles.length &&
+      <div className="mobile__sidebar__notes__title">
+        {titles.length > 0 ? (
           titles.map((title, index) => (
             <MobileNotes
               selected={selected}
@@ -58,7 +53,10 @@ function MobileView({ selected, setSelected }) {
               title={title}
               key={index}
             />
-          ))}
+          ))
+        ) : (
+          <MobileHome />
+        )}
       </div>
       {showPopup && (
         <div className="mobile__popup__overlay">

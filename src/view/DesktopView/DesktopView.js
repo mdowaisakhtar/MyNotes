@@ -12,7 +12,12 @@ function DesktopView() {
     <div className="desktop">
       <DesktopSidebar selected={selected} setSelected={setSelected} />
       {selected.length > 0 ? (
-        <DesktopNotes notes={notes} setNotes={setNotes} selected={selected} setSelected={setSelected} />
+        <DesktopNotes
+          notes={notes}
+          setNotes={setNotes}
+          selected={selected}
+          setSelected={setSelected}
+        />
       ) : (
         <DesktopHome />
       )}
