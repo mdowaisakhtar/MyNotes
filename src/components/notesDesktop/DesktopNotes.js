@@ -29,21 +29,24 @@ function DesktopNotes({ notes, setNotes, selected, setSelected }) {
           .join(" ")
       );
     }
-
   }, [selected, setNotes]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       handleSaveNotes();
     }
   };
 
   const handleSaveNotes = () => {
+    if (!text.trim()) {
+      return;
+    }
     const notes = JSON.parse(localStorage.getItem(selected)) || [];
     const newNoteObj = {
       id: Date.now(),
       title: selected,
-      content: text,
+      content: text.trim(),
       date: new Date().toLocaleDateString(),
       time: new Date().toLocaleTimeString(),
     };
@@ -77,7 +80,7 @@ function DesktopNotes({ notes, setNotes, selected, setSelected }) {
       </div>
       <div className="desktop__notes__input">
         <textarea
-          value={text.trim()}
+          value={text}
           placeholder="Enter your notes here"
           onChange={handleChange}
           onKeyDown={handleKeyDown}
