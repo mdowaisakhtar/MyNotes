@@ -47,7 +47,11 @@ function DesktopNotes({ notes, setNotes, selected, setSelected }) {
       id: Date.now(),
       title: selected,
       content: text.trim(),
-      date: new Date().toLocaleDateString(),
+      date: new Date().toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "numeric",
+        year: "numeric",
+      }),
       time: new Date().toLocaleTimeString(),
     };
     notes.push(newNoteObj);
