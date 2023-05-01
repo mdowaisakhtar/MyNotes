@@ -38,7 +38,9 @@ function NotesMobilePage({ selected, setSelected, notes, setNotes }) {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       handleSaveNotes();
+      setText("");
     }
   };
 
@@ -48,7 +50,11 @@ function NotesMobilePage({ selected, setSelected, notes, setNotes }) {
       id: Date.now(),
       title: selected,
       content: text,
-      date: new Date().toLocaleDateString(),
+      date: new Date().toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "numeric",
+        year: "numeric",
+      }),
       time: new Date().toLocaleTimeString(),
     };
     notes.push(newNoteObj);
