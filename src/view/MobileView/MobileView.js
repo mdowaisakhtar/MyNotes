@@ -4,7 +4,7 @@ import MobilePopup from "../../components/createNotesPopupMobile/MobilePopup";
 import MobileNotes from "../../components/notesMobile/MobileNotes";
 import MobileHome from "../../components/homeMobile/MobileHome";
 
-function MobileView({ selected, setSelected }) {
+function MobileView() {
   const [titles, setTitles] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [groupNamesParent, setGroupNamesParent] = useState(
@@ -48,8 +48,6 @@ function MobileView({ selected, setSelected }) {
         {titles.length > 0 ? (
           titles.map((title, index) => (
             <MobileNotes
-              selected={selected}
-              setSelected={setSelected}
               title={title}
               key={index}
             />

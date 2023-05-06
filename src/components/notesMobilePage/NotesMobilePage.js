@@ -5,13 +5,15 @@ import enter from "../../assets/icons/enter.png";
 import back from "../../assets/icons/back.png";
 import home from "../../assets/home.png";
 import MobileNotesContent from "../notesContentMobile/MobileNotesContent";
+import usePocketContext from "../../hooks/usePocketContext";
 
-function NotesMobilePage({ selected, setSelected, notes, setNotes }) {
+function NotesMobilePage() {
   const [text, setText] = useState("");
   const [bgColor, setBgColor] = useState("#fff");
   const [initials, setInitials] = useState("");
   const [selectedTitle, setSelectedTitle] = useState("");
   const navigate = useNavigate();
+  const { notes, setNotes, selected, setSelected } = usePocketContext();
 
   useEffect(() => {
     setSelected(localStorage.getItem("selected") || "");

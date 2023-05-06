@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./CreateNotesPopup.css";
 
-function CreateNotesPopup({
-  groupNamesParent,
-  setGroupNamesParent,
-  onClose,
-}) {
+function CreateNotesPopup({ groupNamesParent, setGroupNamesParent, onClose }) {
   const [groupName, setGroupName] = useState("");
   const [bgColor, setBgColor] = useState("");
 

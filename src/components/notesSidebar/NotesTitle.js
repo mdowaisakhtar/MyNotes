@@ -1,7 +1,9 @@
 import React from "react";
 import "./NotesTitle.css";
+import usePocketContext from "../../hooks/usePocketContext";
 
-function NotesTitle({ title, selected, setSelected }) {
+function NotesTitle({ title }) {
+  const { selected, setSelected } = usePocketContext();
   const nameInitals = title[0].name
     .split(" ")
     .map((word) => word.charAt(0))
@@ -12,7 +14,7 @@ function NotesTitle({ title, selected, setSelected }) {
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
-  
+
   const handleTitleClick = () => {
     setSelected(title[0].name);
   };

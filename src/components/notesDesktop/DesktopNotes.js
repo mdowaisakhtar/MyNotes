@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./DesktopNotes.css";
 import enter from "../../assets/icons/enter.png";
 import DesktopNotesContent from "../notesContentDesktop/DesktopNotesContent";
+import usePocketContext from "../../hooks/usePocketContext";
 
-function DesktopNotes({ notes, setNotes, selected, setSelected }) {
+function DesktopNotes() {
   const [text, setText] = useState("");
   const [bgColor, setBgColor] = useState("#fff");
   const [initials, setInitials] = useState("");
   const [selectedTitle, setSelectedTitle] = useState("");
+  const { notes, setNotes, selected } = usePocketContext();
 
   useEffect(() => {
     setNotes(JSON.parse(localStorage.getItem(selected)) || []);

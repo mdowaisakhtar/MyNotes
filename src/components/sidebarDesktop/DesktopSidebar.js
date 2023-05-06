@@ -3,7 +3,7 @@ import "./DesktopSidebar.css";
 import CreateNotesPopup from "../createNotesPopupDesktop/CreateNotesPopup";
 import NotesTitle from "../notesSidebar/NotesTitle";
 
-function DesktopSidebar({ selected, setSelected }) {
+function DesktopSidebar() {
   const [titles, setTitles] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [groupNamesParent, setGroupNamesParent] = useState(
@@ -46,14 +46,7 @@ function DesktopSidebar({ selected, setSelected }) {
       </div>
       <div className="desktop__sidebar__notes__title">
         {titles.length > 0 ? (
-          titles.map((title, index) => (
-            <NotesTitle
-              selected={selected}
-              setSelected={setSelected}
-              key={index}
-              title={title}
-            />
-          ))
+          titles.map((title, index) => <NotesTitle key={index} title={title} />)
         ) : (
           <div className="desktop__sidebar__notes__title__empty">
             <p>No Notes Group Created</p>

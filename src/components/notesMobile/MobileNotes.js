@@ -2,9 +2,11 @@
 import React from "react";
 import "./MobileNotes.css";
 import { useNavigate } from "react-router-dom";
+import usePocketContext from "../../hooks/usePocketContext";
 
-function MobileNotes({ title, setSelected }) {
+function MobileNotes({ title }) {
   const navigate = useNavigate();
+  const { setSelected } = usePocketContext();
   const initials = title[0].name
     .split(" ")
     .map((n) => n[0].toUpperCase())

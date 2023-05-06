@@ -4,50 +4,37 @@ import DesktopView from "./view/DesktopView/DesktopView";
 import MobileView from "./view/MobileView/MobileView";
 import NotesMobilePage from "./components/notesMobilePage/NotesMobilePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Provider } from "./context/PocketContext";
+import usePocketContext from "./hooks/usePocketContext";
 
 function App() {
   const [screenSize, setScreenSize] = useState(window.innerWidth);
-  const [selected, setSelected] = useState(""); // eslint-disable-line
-  const [notes, setNotes] = useState([]); // eslint-disable-line
+  const { selected, setSelected } = usePocketContext();
 
   useEffect(() => {
     setSelected(localStorage.getItem("selected") || "");
+    // eslint-disable-next-line
   }, [selected]);
-
   const checkScreenSize = () => {
     setScreenSize(window.innerWidth);
   };
 
   window.addEventListener("resize", checkScreenSize);
-
   return (
-    <div className="App">
-      {screenSize > 500 ? (
-        <DesktopView />
-      ) : (
-        <Router>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <MobileView selected={selected} setSelected={setSelected} />
-              }
-            />
-            <Route
-              path="/notes"
-              element={
-                <NotesMobilePage
-                  selected={selected}
-                  setSelected={setSelected}
-                  notes={notes}
-                  setNotes={setNotes}
-                />
-              }
-            />
-          </Routes>
-        </Router>
-      )}
-    </div>
+    <Provider>
+      <div className="App">
+        {screenSize > 500 ? (
+          <DesktopView />
+        ) : (
+          <Router>
+            <Routes>
+              <Route path="/" element={<MobileView />} />
+              <Route path="/notes" element={<NotesMobilePage />} />
+            </Routes>
+          </Router>
+        )}
+      </div>
+    </Provider>
   );
 }
 
