@@ -37,7 +37,7 @@ function MobileView() {
   };
   return (
     <div className="mobile__sidebar">
-      <div className="mobile__sidebar__title">Pocket Notes</div>
+      <div className="mobile__sidebar__title">MyPocketNotes</div>
       <div className="mobile__sidebar__create__notes__btn">
         <button onClick={handleClick}>
           <span id="add">+</span>

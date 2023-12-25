@@ -37,7 +37,7 @@ function DesktopSidebar() {
 
   return (
     <div className="desktop__sidebar">
-      <div className="desktop__sidebar__title">Pocket Notes</div>
+      <div className="desktop__sidebar__title">MyPocketNotes</div>
       <div className="desktop__sidebar__create__notes__btn">
         <button onClick={handleClick}>
           <span id="add">+</span>
